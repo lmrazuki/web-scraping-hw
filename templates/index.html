@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Scrape Mars</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+     <link rel="stylesheet" href="static/style.css" />
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div class="jumbotron text-center">
+        <h1>Want to learn all about Mars?</h1>
+        <p>Well, you have come to the right place</p>
+        <p>
+          <a class="btn btn-primary btn-lg" href="/scrape" role="button"
+            >Click to learn!</a
+          >
+        </p>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-11">
+          <h3>Latest Mars News:</h3>
+          <h5>{{mars.title}}</h5>
+          <p>{{mars.paragraph}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-7">
+        <h3 class="text-center">Featured Mars Image</h3>
+        <div class = 'container'>
+        <div class = 'image'>
+        <img
+          src="{{mars.feature_image}}"
+          alt="Feature Image"
+        />
+        </div>
+        </div>
+      </div>
+      <div class="col-md-5">
+        
+        <h3>Mars Facts</h3>
+          {% block content %}
+          {% include "mars_facts.html" %}
+          {% endblock %}
+      </div>
+      
+    </div>
+
+<div class="row">
+  <div class="container">
+    <div class="col-md-12">
+    <h2 class="text-center">Hemispheres of Mars</h2>
+    </div>
+      <hr>
+      <hr>
+      {% for hemisphere in mars.hemispheres %}
+      <div class="image">
+        <h5 class="text-center">{{hemisphere.title}}</h5>
+        <img src="{{hemisphere.img_url}}" />
+      </div>
+      {%endfor%}
+    </div>
+  </div>
+</div>
+  </body>
+</html>
